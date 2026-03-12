@@ -1,0 +1,31 @@
+name: "tinx-release-action"
+description: "Run tinx release with OCI push support"
+author: "sourceplane"
+branding:
+  icon: "upload-cloud"
+  color: "blue"
+
+inputs:
+  registry:
+    description: "OCI target reference for --push (e.g. ghcr.io/sourceplane/torkflow:v0.0.1)"
+    required: true
+  delegate-goreleaser:
+    description: "Enable --delegate-goreleaser"
+    required: false
+    default: "false"
+  working-directory:
+    description: "Working directory used when running tinx release"
+    required: false
+    default: "."
+  tinx-version:
+    description: "tinx version to install"
+    required: false
+    default: "v0.1.4"
+  install-url:
+    description: "Installer script URL"
+    required: false
+    default: "https://raw.githubusercontent.com/sourceplane/tinx/main/install.sh"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"

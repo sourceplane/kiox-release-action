@@ -1,0 +1,32 @@
+# tinx-release-action
+
+Node-based GitHub Action to run `tinx release` with push support.
+
+## Inputs
+
+- `registry` (required): OCI target for `--push`, for example `ghcr.io/sourceplane/torkflow:v0.0.1`
+- `delegate-goreleaser` (optional, default `false`): adds `--delegate-goreleaser`
+- `working-directory` (optional, default `.`)
+- `tinx-version` (optional, default `v0.1.4`)
+- `install-url` (optional, default official `install.sh` URL)
+
+## Usage
+
+```yaml
+- uses: sourceplane/tinx-release-action@v1
+  with:
+    registry: ghcr.io/sourceplane/torkflow:v0.0.1
+    delegate-goreleaser: true
+```
+
+This maps to:
+
+```bash
+tinx release --delegate-goreleaser --push ghcr.io/sourceplane/torkflow:v0.0.1
+```
+
+When `delegate-goreleaser` is `false`, the command is:
+
+```bash
+tinx release --push ghcr.io/sourceplane/torkflow:v0.0.1
+```

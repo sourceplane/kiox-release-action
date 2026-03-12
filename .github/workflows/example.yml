@@ -1,0 +1,15 @@
+name: example-release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        with:
+          registry: ghcr.io/sourceplane/torkflow:v0.0.1
+          delegate-goreleaser: true
